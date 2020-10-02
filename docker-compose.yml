@@ -1,0 +1,16 @@
+# https://docs.docker.jp/compose/rails.html
+version: '3'
+services:
+  #db:
+  #  image: postgres
+  #  volumes:
+  #    - ./db:/var/lib/postgresql/data
+  web:
+    build: .
+    volumes:
+      - ./:/myapp
+    ports:
+      - "3000:3000"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    #depends_on:
+    #  - db
