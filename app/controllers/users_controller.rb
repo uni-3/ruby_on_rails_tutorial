@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       # ok
       # flash変数に代入したメッセージは、リダイレクトした直後のページで表示できるようになります。
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
