@@ -38,3 +38,7 @@ $ rails server
 ```
 
 詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
+
+
+### 演習問題参考
+http://mochikichi.hatenablog.com/entry/rails_tutorial_guide
