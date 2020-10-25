@@ -6,6 +6,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle update
 RUN bundle install --without production
+RUN bundle check
 COPY . /myapp
 
 # Add a script to be executed every time the container starts.

@@ -1,0 +1,11 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <!-- usersのコレクション(user)を_user.html.erbに渡す 自動で判定するらしい -->
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>
