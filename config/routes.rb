@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   # usersリソースで必要となるurl httpリクエストが有効になる
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :account_activations, only: [:edit]
+
 end

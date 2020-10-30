@@ -80,7 +80,7 @@ class UserTest < ActiveSupport::TestCase
   # digestがない、（他ブラウザでログアウトしたときDB上のdigestが消えたとき）
   # user属性のdigest値で判断
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember, '')
   end
 
 

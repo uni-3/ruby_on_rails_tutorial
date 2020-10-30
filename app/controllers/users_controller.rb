@@ -8,11 +8,13 @@ class UsersController < ApplicationController
   def index
     #@user = User.all
     # pageの分だけuser取得
-    @users = User.paginate(page: params[:page])
+    #@users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
   end
 
   def new
@@ -25,9 +27,12 @@ class UsersController < ApplicationController
     if @user.save
       # ok
       # flash変数に代入したメッセージは、リダイレクトした直後のページで表示できるようになります。
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      #log_in @user
+      #flash[:success] = "Welcome to the Sample App!"
+      #redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       # ng
       render 'new'
@@ -78,8 +83,8 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      #redirect_to(root_url) unless current_user?(@user)
-      redirect_to(root_url) unless current_user.admin?
+      redirect_to(root_url) unless current_user?(@user)
+      #redirect_to(root_url) unless current_user.admin?
     end
 
 end
