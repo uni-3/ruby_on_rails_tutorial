@@ -22,8 +22,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @feed_items = []
   end
-  
+
   test "layout links when logged in" do
     log_in_as(@user)
     get root_path
